@@ -1,0 +1,60 @@
+//Gradle é um sistema de build de projetos
+
+//plugins:
+//permite que o projeto estenda os recursos necessarios e aplica algumas configurações especificas
+//usado para definir o compilador do JAVA
+plugins {
+    id 'org.springframework.boot' version '2.5.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'br.com.estudos'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //implementation:
+    //onde é feita a declaração das dependencias internas que não devem ser expostas aos consumidores
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+    //compileOnly:
+    //onde é feita a declaração de dependências no tempo de compilação
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    //runtimeOnly:
+    //onde é feita a declaração de dependências no tempo de execução
+    runtimeOnly 'org.postgresql:postgresql'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'com.h2database:h2:1.3.148'
+    //testImplementation:
+    //onde é feita a declaração de dependências utilizadas para compilar os testes
+    //testRuntimeOnly:
+    //onde é feita a declaração de dependências no tempo de execução dos testes
+    //testCompiletimeOnly:
+    //onde é feita a declaração de dependências no tempo de compilação dos testes
+    compileOnly('io.springfox:springfox-swagger2:2.9.2')
+    compileOnly('io.springfox:springfox-swagger-ui:2.9.2')
+}
+
+//task taskTeste {
+//    group 'minhas tasks'
+//    description 'testando task gradle'
+//    print ("testando task gradle")
+//}
+
+test {
+    useJUnitPlatform()
+}

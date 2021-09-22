@@ -1,0 +1,8 @@
+rootProject.name = 'multiModulo'
+
+include 'service'
+include 'controller'
+include 'repository'
+include 'model'
+include 'model'
+

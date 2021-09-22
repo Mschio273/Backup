@@ -1,0 +1,4 @@
+//Script feito em groovy que serve para definir as opções do projeto
+// e configurar as instâncias dos modulos
+
+rootProject.name = 'teste'
